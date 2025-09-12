@@ -1,56 +1,72 @@
+# AI Talents League R1: Sales Prediction Challenge 🚀
 
-# 🏆 AI Talents League R1: Sales Prediction Engine
+This repository contains my submission for the **AI Talents League Round 1** competition hosted by **Zaka Egypt**, focusing on predicting product sales. The project walks through a complete machine learning workflow, from initial data exploration to final model submission.
 
+## 🏆 Competition Result
 
-This repository contains my complete solution for the **AI Talents League Round 1** competition. The goal is to predict product sales based on a diverse set of item and outlet features. The project demonstrates a full machine learning pipeline, including exploratory data analysis, data cleaning, feature engineering, and modeling with a `RandomForestRegressor`.
+I'm proud to have achieved a **rank of 31 out of 109 participants** on the public leaderboard. This result was accomplished through a meticulous process of data cleaning, feature engineering, and robust modeling.
+
+## 📖 Project Overview
+
+The core task of this competition was to predict the sales (`Y`) for a range of products across different outlets. My approach is founded on the principle of **"understanding before predicting,"** ensuring that every decision is backed by data-driven insights. This notebook serves as a comprehensive guide to my methodology.
+
+### 🚀 Workflow & Methodology
+
+The solution follows a structured pipeline designed to maximize model performance:
+
+1.  **Initial Setup & EDA:**
+    * Loaded the dataset and performed an initial exploratory data analysis (EDA).
+    * Visualized the distribution of the target variable (`Y`) to identify skewness and outliers.
+    * Analyzed the properties of both numerical and categorical features.
+
+2.  **Data Cleaning & Preprocessing:**
+    * **Duplicate Removal:** Identified and removed duplicate rows to ensure data integrity.
+    * **Missing Value Imputation:** Handled missing values using robust strategies: **median** for numerical columns and **mode** for categorical columns.
+    * **Outlier Removal:** Visualized outliers using boxplots and removed them using the **Interquartile Range (IQR)** method to create a cleaner, more stable dataset for training.
+
+3.  **Advanced Feature Engineering:**
+    * **Item Categorization:** Engineered a new, low-cardinality feature `X0` by extracting the category prefix (e.g., 'FD' for Food, 'DR' for Drinks) from the high-cardinality item identifier `X1`.
+    * **Categorical Data Standardization:** Cleaned inconsistent values in feature `X3` (e.g., 'low fat', 'LF') by mapping them to standardized categories ('Low Fat', 'Regular').
+    * **Encoding & Scaling:** Applied `OrdinalEncoder` for features with a clear order, `OneHotEncoder` for nominal features, and `RobustScaler` for numerical features to prepare the data for the model.
+
+4.  **Modeling & Prediction:**
+    * Trained a powerful `RandomForestRegressor` model on the processed data.
+    * Generated predictions on the preprocessed test set.
+    * Formatted the output into the required `submission.csv` format.
 
 ---
 
-## 🚀 Project Overview
+## 💡 Key Challenges & Solutions
 
-The core of this project is a single Jupyter Notebook (`sales_prediction_notebook.ipynb`) that provides a step-by-step walkthrough of the solution. My approach emphasizes a deep understanding of the data to build a robust and accurate predictive model.
+Several data-related challenges were identified and addressed during the project:
 
-### 🎯 Key Features:
-* **Comprehensive EDA**: In-depth analysis using visualizations to uncover data distributions, correlations, and outliers.
-* **Systematic Preprocessing**: A structured approach to handling missing values, data inconsistencies, and outliers.
-* **Smart Feature Engineering**: Creation of new, impactful features like `Item_Category` from existing IDs to improve model performance.
-* **Robust Modeling**: Implementation of a `RandomForestRegressor` and evaluation using cross-validation to ensure reliable results.
-* **Clear Interpretation**: Analysis of feature importances to understand the key drivers behind the model's predictions.
+* **Challenge: High-Cardinality Identifier (`X1`)**
+    * The `X1` column contained thousands of unique item IDs, which could lead to overfitting and the curse of dimensionality if one-hot encoded.
+    * **Solution:** Instead of using the ID directly, I engineered a more general `Item_Category` feature (`X0`) from its prefix. This captured the essential information (Food, Drink, etc.) without overwhelming the model.
 
----
+* **Challenge: Inconsistent Categorical Data**
+    * The `X3` column had multiple representations for the same concept (e.g., 'low fat', 'LF', 'reg').
+    * **Solution:** I standardized these values into two consistent categories ('Low Fat' and 'Regular') to ensure the model could learn a clear pattern.
 
-## 🛠️ Technologies & Libraries
-
-This project is built using Python 3 and relies on the following core libraries:
-
-* **Data Manipulation & Analysis**: `pandas`, `numpy`
-* **Data Visualization**: `matplotlib`, `seaborn`
-* **Machine Learning**: `scikit-learn`, `xgboost`
-* **Environment**: `Jupyter Notebook`
+* **Challenge: Outliers in Numerical Features**
+    * Boxplots revealed the presence of significant outliers that could skew the model's training and negatively impact its performance.
+    * **Solution:** I implemented a robust outlier removal strategy based on the **Interquartile Range (IQR)**, which effectively trimmed extreme values before feeding the data to the model.
 
 ---
 
-## ⚙️ How to Run This Project
+## 🛠️ Tech Stack
 
-To replicate the results, follow these steps:
+* **Language:** Python
+* **Core Libraries:** Pandas, NumPy, Scikit-learn
+* **Visualization:** Matplotlib, Seaborn
+* **Environment:** Kaggle Notebooks
 
-1.  **Clone the repository:**
+## 📂 How to Use
+
+1.  Clone this repository:
     ```bash
     git clone https://github.com/Jasmine25005/AITalents-Sales-Prediction.git
-    cd AITalents-Sales-Prediction
     ```
-2.  **Launch Jupyter Notebook:**
-    ```bash
-    jupyter notebook
-    ```
-
----
-
-## 📁 Repository Structure
-
-````
-├── 📜 code.ipynb  
-├── 📜 submission.csv         \# The final submission file generated by the notebook
-└── 📜 README.md              \# This file
-
-````
+2.  Download the dataset from the [AI Talents League Round 1 Kaggle competition page](https://www.kaggle.com/competitions/ai-talents-league-round-1).
+3.  Place the `train.csv` and `test.csv` files in the project directory.
+4.  Run the Jupyter Notebook to execute the full analysis and generate the `submission.csv` file.
