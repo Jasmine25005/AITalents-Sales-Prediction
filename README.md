@@ -54,5 +54,3 @@ To replicate the results, follow these steps:
 └── 📜 README.md              \# This file
 
 ````
-
-```
