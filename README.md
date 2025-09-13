@@ -4,7 +4,7 @@ This repository contains my submission for the **AI Talents League Round 1** com
 
 ## 🏆 Competition Result
 
-I'm proud to have achieved a **rank of 31 out of 109 participants** on the public leaderboard. This result was accomplished through a meticulous process of data cleaning, feature engineering, and robust modeling.
+I'm proud to have achieved a **rank of `31` out of `109` participants** on the public leaderboard. This result was accomplished through a meticulous process of data cleaning, feature engineering, and robust modeling.
 
 ## 📖 Project Overview
 
@@ -60,9 +60,8 @@ Several data-related challenges were identified and addressed during the project
 A deep dive into the data uncovered several key patterns that guided the feature engineering and modeling process.
 
 ### 1. Sales Distribution (The Target)
-The histogram revealed a right-skewed distribution, indicating that lower sales values are more frequent.
-
-
+The histogram revealed a left-skewed distribution, indicating that higher sales values are more frequent.
+![img1](DistripofY.png)
 *Image showing the histogram of the sales variable 'Y'.*
 
 ### 2. Correlation Heatmap
@@ -74,14 +73,16 @@ The heatmap showed linear relationships between numerical features, with a notab
 ### 3. Sales by Outlet Type
 Boxplots revealed that Supermarket Type3 outlets generally have the highest median sales, highlighting the importance of this feature.
 
-![img3](comparing dist of Y Bp.png)
+![img3](comparingdistofYBp.png)
 *Image of the boxplot comparing sales across different outlet types.*
 
 ### 4. Item Visibility vs. Sales
 The scatterplot showed that many products with zero visibility were still generating sales, suggesting potential data anomalies.
 
-![img4](X4 vs Y.png)
+![img4](X4vsY.png)
 *Image of the scatterplot for Item Visibility vs. Sales.*
+
+
 
 ---
 ## 🛠️ Tech Stack
