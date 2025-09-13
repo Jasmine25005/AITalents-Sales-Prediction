@@ -54,13 +54,43 @@ Several data-related challenges were identified and addressed during the project
 
 ---
 
+ 
+## 📊 Visual Data Storytelling: Key Insights from EDA
+
+A deep dive into the data uncovered several key patterns that guided the feature engineering and modeling process.
+
+### 1. Sales Distribution (The Target)
+The histogram revealed a right-skewed distribution, indicating that lower sales values are more frequent.
+
+
+*Image showing the histogram of the sales variable 'Y'.*
+
+### 2. Correlation Heatmap
+The heatmap showed linear relationships between numerical features, with a notable positive correlation between X2 and X6.
+
+![img2](cm.png)
+*Image of the correlation heatmap.*
+
+### 3. Sales by Outlet Type
+Boxplots revealed that Supermarket Type3 outlets generally have the highest median sales, highlighting the importance of this feature.
+
+![img3](comparing dist of Y Bp.png)
+*Image of the boxplot comparing sales across different outlet types.*
+
+### 4. Item Visibility vs. Sales
+The scatterplot showed that many products with zero visibility were still generating sales, suggesting potential data anomalies.
+
+![img4](X4 vs Y.png)
+*Image of the scatterplot for Item Visibility vs. Sales.*
+
+---
 ## 🛠️ Tech Stack
 
 * **Language:** Python
 * **Core Libraries:** Pandas, NumPy, Scikit-learn
 * **Visualization:** Matplotlib, Seaborn
 * **Environment:** Kaggle Notebooks
-
+---
 ## 📂 How to Use
 
 1.  Clone this repository:
